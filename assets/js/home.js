@@ -1,3 +1,3 @@
-var showDate = require('js/showDate.js');
+var showDate = require('exports?showDate!js/showDate.js');
 
 showDate('date');
