@@ -12,5 +12,12 @@ module.exports = {
     output: {
         path: path.join(__dirname, './web/compiled'),
         filename: '[name].compiled.js'
-    }
+    },
+    plugins: [
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery",
+            "window.jQuery": "jquery"
+        })
+    ]
 };
