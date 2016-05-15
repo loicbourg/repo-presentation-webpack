@@ -1,7 +1,9 @@
 var webpack = require('webpack');
 var path = require('path');
+var merge = require('webpack-merge');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-module.exports = {
+var common = {
     entry: {
         home: "./js/home",
         'dev-server': 'webpack/hot/dev-server'
@@ -18,16 +20,8 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /\.css$/,
-                loaders: ["style-loader", "css-loader"]
-            },
-            {
                 test: /(\.woff)|(\.eot)|(\.ttf)|(\.svg)/,
                 loader: 'url?limit=100000'
-            },
-            {
-                test: /\.less/,
-                loaders: ["style-loader", "css-loader", "less-loader"]
             }
         ]
     },
@@ -39,3 +33,36 @@ module.exports = {
         })
     ]
 };
+
+if (process.env.NODE_ENV == 'production') {
+    module.exports = merge(common, {
+            module: {
+                loaders: [
+                    {
+                        test: /\.less$/,
+                        loader: ExtractTextPlugin.extract("style", "css!less")
+                    }
+                ]
+            },
+            plugins: [
+                new ExtractTextPlugin('[name].compiled.css')
+            ]
+        }
+    );
+} else {
+    module.exports = merge(common, {
+            module: {
+                loaders: [
+                    {
+                        test: /\.css$/,
+                        loaders: ["style-loader", "css-loader"]
+                    },
+                    {
+                        test: /\.less/,
+                        loaders: ["style-loader", "css-loader", "less-loader"]
+                    }
+                ]
+            }
+        }
+    );
+}
