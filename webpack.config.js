@@ -3,7 +3,8 @@ var path = require('path');
 
 module.exports = {
     entry: {
-        home: "./js/home"
+        home: "./js/home",
+        'dev-server': 'webpack/hot/dev-server'
     },
     context: path.join(__dirname, 'assets'),
     resolve: {
@@ -11,7 +12,8 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname, './web/compiled'),
-        filename: '[name].compiled.js'
+        filename: '[name].compiled.js',
+        publicPath: '/compiled'
     },
     module: {
         loaders: [
