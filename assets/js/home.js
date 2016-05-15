@@ -1,5 +1,3 @@
-var showDate = function(id) {
-    document.getElementById(id).innerHTML = new Date().toDateString();
-};
+var showDate = require('js/showDate.js');
 
 showDate('date');
