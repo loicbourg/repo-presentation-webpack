@@ -1,3 +1,5 @@
+var moment = require('moment');
+
 var showDate = function(id) {
-    document.getElementById(id).innerHTML = new Date().toDateString();
+    document.getElementById(id).innerHTML = moment().format();
 };

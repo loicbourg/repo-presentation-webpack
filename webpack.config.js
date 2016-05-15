@@ -7,7 +7,7 @@ module.exports = {
     },
     context: path.join(__dirname, 'assets'),
     resolve: {
-        modulesDirectories: ['assets']
+        modulesDirectories: ['assets', 'node_modules']
     },
     output: {
         path: path.join(__dirname, './web/compiled'),
