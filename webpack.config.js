@@ -5,8 +5,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var common = {
     entry: {
-        home: "./js/home",
-        'dev-server': 'webpack/hot/dev-server'
+        home: "./js/home"
     },
     context: path.join(__dirname, 'assets'),
     resolve: {

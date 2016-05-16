@@ -1,5 +1,8 @@
 require('less/home.less');
 
-var showDate = require('exports?showDate!js/showDate.js');
-
-showDate('date');
+document.getElementById('show-date').addEventListener('click', function(){
+    require.ensure([], function() {
+        var showDate = require('exports?showDate!js/showDate.js');
+        showDate('date');
+    });
+});
